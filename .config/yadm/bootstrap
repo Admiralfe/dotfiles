@@ -1,0 +1,30 @@
+#!/bin/bash
+
+if ! command -v git > /dev/null 2>&1; then
+    sudo apt install git
+fi
+
+if ! command -v git > /dev/null 2>&1; then
+    sudo apt install curl
+fi
+
+if ! command -v brew > /dev/null 2>&1; then
+#install linuxbrew
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
+
+if ! command -v nvim > /dev/null 2>&1; then
+    brew install neovim
+fi
+
+if [ ! -d "~/.local/share/nvim/site/pack/packer/start" ] then
+    echo "bootrapping packer"
+    nvim '+BootstrapPacker'
+fi
+
+nvim '+PackerSync'
+
+if [ ! -d "~/.tmux/plugins/tpm" ] then
+    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+fi
+
