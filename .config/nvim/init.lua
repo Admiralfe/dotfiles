@@ -13,7 +13,6 @@ vim.g.mapleader = '-'
 
 require("plugins")
 require("lsp_setup")
-require("cmds")
 
 vim.cmd [[colorscheme terafox]]
 

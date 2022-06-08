@@ -1,30 +1,41 @@
 #!/bin/bash
 
+#Dependencies for the rest of the script: git and curl
 if ! command -v git > /dev/null 2>&1; then
-    sudo apt install git
+    sudo apt install -y git
 fi
 
 if ! command -v git > /dev/null 2>&1; then
-    sudo apt install curl
+    sudo apt install -y curl
+fi
+
+#Tmux install
+if ! command -v tmux > /dev/null 2>&1; then
+    sudo apt install -y tmux
 fi
 
 if ! command -v brew > /dev/null 2>&1; then
-#install linuxbrew
+    #install linuxbrew
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
 
 if ! command -v nvim > /dev/null 2>&1; then
     brew install neovim
 fi
 
-if [ ! -d "~/.local/share/nvim/site/pack/packer/start" ] then
-    echo "bootrapping packer"
-    nvim '+BootstrapPacker'
-fi
-
-nvim '+PackerSync'
-
-if [ ! -d "~/.tmux/plugins/tpm" ] then
+if [ ! -d "$HOME/.tmux/plugins/tpm" ]
+then
     git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 fi
+
+if [ ! -d "$HOME/.local/share/nvim/site/pack/packer/" ]
+then
+    echo "bootrapping packer"
+    git clone --depth 1 https://github.com/wbthomason/packer.nvim \
+        ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+fi
+
+nvim "+PackerSync" "+qall"
+
 
