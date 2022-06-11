@@ -10,6 +10,10 @@ require("nvim-lsp-installer").setup({
     }
 })
 
+local capabilities = require("cmp_nvim_lsp").update_capabilities(
+    vim.lsp.protocol.make_client_capabilities())
+
+
 local attach_hook = function(client, bufnr)
     local bufopts = { noremap=true, silent=true, buffer=bufnr }
     vim.keymap.set('n', 'gc', vim.lsp.buf.declaration, bufopts)
@@ -27,15 +31,19 @@ local lspconfig = require("lspconfig")
 
 lspconfig.clangd.setup {
     on_attach = attach_hook,
+    capabilities = capabilities,
 }
 lspconfig.rust_analyzer.setup {
     on_attach = attach_hook,
+    capabilities = capabilities,
 }
 lspconfig.pylsp.setup {
     on_attach = attach_hook,
+    capabilities = capabilities,
 }
 lspconfig.hls.setup {
     on_attach = attach_hook,
+    capabilities = capabilities,
 }
 
 
