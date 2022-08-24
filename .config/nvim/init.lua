@@ -12,6 +12,8 @@ vim.opt.incsearch = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
+vim.opt.clipboard = "unnamedplus"
+
 vim.g.mapleader = '-'
 
 require("plugins")
@@ -44,7 +46,6 @@ require("nvim-treesitter.configs").setup{
 
 require("telescope").setup{}
 require("telescope").load_extension("fzf")
-
 
 local opts = { noremap = true, silent = true, }
 vim.api.nvim_set_keymap('n', "<leader>ff", "<cmd>Telescope find_files<cr>", opts)
