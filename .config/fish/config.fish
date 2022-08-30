@@ -13,4 +13,7 @@ if status is-interactive
     set PATH $PATH $GUROBI_HOME/bin
     set -x LD_LIBRARY_PATH $LD_LIBRARY_PATH $GUROBI_HOME/lib
     set -x CPLUS_INCLUDE_PATH $CPLUS_INCLUDE_PATH $GUROBI_HOME/include
+
+    alias fd=fdfind
+    alias bat=batcat
 end
