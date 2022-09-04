@@ -38,4 +38,7 @@ fi
 
 nvim "+PackerSync" "+qall"
 
+#GDB Dashboard
+wget -P ~ https://git.io/.gdbinit
+
 
