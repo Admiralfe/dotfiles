@@ -33,10 +33,6 @@ lspconfig.clangd.setup {
     on_attach = attach_hook,
     capabilities = capabilities,
 }
-lspconfig.pylsp.setup {
-    on_attach = attach_hook,
-    capabilities = capabilities,
-}
 lspconfig.hls.setup {
     on_attach = attach_hook,
     capabilities = capabilities,
