@@ -38,4 +38,8 @@ fi
 
 nvim "+PackerSync" "+qall"
 
+#GDB Dashboard
+wget -P ~ https://git.io/.gdbinit
 
+#Fisher plugin manager
+curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
