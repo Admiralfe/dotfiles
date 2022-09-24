@@ -23,5 +23,7 @@ return require("packer").startup(function(use)
     -- Compiled fuzzy finder
     use { "nvim-telescope/telescope-fzf-native.nvim", run = "make" }
 
+    use "https://git.sr.ht/~whynothugo/lsp_lines.nvim"
+
     use "simrat39/rust-tools.nvim"
 end)
