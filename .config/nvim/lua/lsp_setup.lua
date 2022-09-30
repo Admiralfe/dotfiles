@@ -37,7 +37,7 @@ lspconfig.rust_analyzer.setup {
     on_attach = attach_hook,
     capabilities = capabilities,
 }
-lspconfig.pylsp.setup {
+lspconfig.pyright.setup {
     on_attach = attach_hook,
     capabilities = capabilities,
 }
