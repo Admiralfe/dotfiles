@@ -91,7 +91,7 @@ _G.packer_plugins = {
   },
   ["lsp_lines.nvim"] = {
     loaded = true,
-    path = "/home/felixliu/.local/share/nvim/site/pack/packer/start/lsp_lines.nvim",
+    path = "/home/felliu/.local/share/nvim/site/pack/packer/start/lsp_lines.nvim",
     url = "https://git.sr.ht/~whynothugo/lsp_lines.nvim"
   },
   ["nightfox.nvim"] = {
