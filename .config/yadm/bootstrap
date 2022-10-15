@@ -2,26 +2,20 @@
 
 #Dependencies for the rest of the script: git and curl
 if ! command -v git > /dev/null 2>&1; then
-    sudo apt install -y git
+    sudo pamac install base-devel git
 fi
 
-if ! command -v git > /dev/null 2>&1; then
-    sudo apt install -y curl
+if ! command -v curl > /dev/null 2>&1; then
+    sudo pamac install curl
 fi
 
 #Tmux install
 if ! command -v tmux > /dev/null 2>&1; then
-    sudo apt install -y tmux
-fi
-
-if ! command -v brew > /dev/null 2>&1; then
-    #install linuxbrew
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+    sudo pamac install tmux
 fi
 
 if ! command -v nvim > /dev/null 2>&1; then
-    brew install neovim
+    sudo pamac install neovim
 fi
 
 if [ ! -d "$HOME/.tmux/plugins/tpm" ]
@@ -43,3 +37,8 @@ wget -P ~ https://git.io/.gdbinit
 
 #Fisher plugin manager
 curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
+fisher install patrickf1/fzf.fish
+fisher install edc/bass
+
+#Starship prompt
+curl -sS https://starship.rs/install.sh | sh

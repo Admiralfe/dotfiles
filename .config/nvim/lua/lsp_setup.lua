@@ -40,6 +40,7 @@ lspconfig.clangd.setup {
 lspconfig.rust_analyzer.setup {
     on_attach = attach_hook,
     capabilities = capabilities,
+}
 lspconfig.pyright.setup {
     on_attach = attach_hook,
     capabilities = capabilities
