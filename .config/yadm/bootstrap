@@ -2,20 +2,20 @@
 
 #Dependencies for the rest of the script: git and curl
 if ! command -v git > /dev/null 2>&1; then
-    sudo pamac install base-devel git
+    sudo pacman -S base-devel git
 fi
 
 if ! command -v curl > /dev/null 2>&1; then
-    sudo pamac install curl
+    sudo pacman -S curl
 fi
 
 #Tmux install
 if ! command -v tmux > /dev/null 2>&1; then
-    sudo pamac install tmux
+    sudo pacmand -S tmux
 fi
 
 if ! command -v nvim > /dev/null 2>&1; then
-    sudo pamac install neovim
+    sudo pacman -S neovim
 fi
 
 if [ ! -d "$HOME/.tmux/plugins/tpm" ]
