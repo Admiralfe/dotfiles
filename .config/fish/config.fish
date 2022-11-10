@@ -7,6 +7,7 @@ if status is-interactive
     end
 
     fish_add_path $HOME/.cargo/bin
+    fish_add_path $HOME/.local/bin
     
     #Gurobi related files (Gurobi installed under /opt/gurobi951
     set -x GUROBI_HOME /opt/gurobi951/linux64
