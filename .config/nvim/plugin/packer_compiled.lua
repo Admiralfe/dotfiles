@@ -99,6 +99,11 @@ _G.packer_plugins = {
     path = "/home/felixliu/.local/share/nvim/site/pack/packer/start/lsp_lines.nvim",
     url = "https://git.sr.ht/~whynothugo/lsp_lines.nvim"
   },
+  ["markdown-preview.nvim"] = {
+    loaded = true,
+    path = "/home/felixliu/.local/share/nvim/site/pack/packer/start/markdown-preview.nvim",
+    url = "https://github.com/iamcco/markdown-preview.nvim"
+  },
   ["nightfox.nvim"] = {
     loaded = true,
     path = "/home/felixliu/.local/share/nvim/site/pack/packer/start/nightfox.nvim",

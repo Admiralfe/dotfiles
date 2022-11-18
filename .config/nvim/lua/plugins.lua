@@ -4,7 +4,7 @@ return require("packer").startup(function(use)
     use "wbthomason/packer.nvim"
 
     use "EdenEast/nightfox.nvim"
-    
+
     use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" }
 
     use "williamboman/nvim-lsp-installer"
@@ -24,6 +24,15 @@ return require("packer").startup(function(use)
     use { "nvim-telescope/telescope-fzf-native.nvim", run = "make" }
 
     use "https://git.sr.ht/~whynothugo/lsp_lines.nvim"
-
     use "simrat39/rust-tools.nvim"
+
+    -- install without yarn or npm
+    use({
+        "iamcco/markdown-preview.nvim",
+        run = function() vim.fn["mkdp#util#install"]() end,
+    })
+    use({ "iamcco/markdown-preview.nvim",
+            run = "cd app && npm install",
+            setup = function() vim.g.mkdp_filetypes = { "markdown" } end,
+            ft = { "markdown" }, })
 end)
