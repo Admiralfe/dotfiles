@@ -43,7 +43,14 @@ lspconfig.rust_analyzer.setup {
 }
 lspconfig.pyright.setup {
     on_attach = attach_hook,
-    capabilities = capabilities
+    capabilities = capabilities,
+    settings = {
+        python = {
+            analysis = {
+                typeCheckingMode = "off"
+            }
+        }
+    }
 }
 lspconfig.hls.setup {
     on_attach = attach_hook,

@@ -12,6 +12,8 @@ vim.opt.incsearch = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
+vim.opt.clipboard = "unnamedplus"
+
 vim.g.mapleader = '-'
 
 --Match trailing whitespace
