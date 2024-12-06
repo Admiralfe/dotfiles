@@ -1,40 +1,38 @@
-#!/bin/bash
+#!/usr/bin/fish
 
 #Dependencies for the rest of the script: git and curl
-if ! command -v git > /dev/null 2>&1; then
+if not type -q git
     sudo apt install -y git
-fi
+end
 
-if ! command -v git > /dev/null 2>&1; then
+if not type -q curl
     sudo apt install -y curl
-fi
+end
 
 #Tmux install
-if ! command -v tmux > /dev/null 2>&1; then
+if not type -q tmux
     sudo apt install -y tmux
-fi
+end
 
-if ! command -v brew > /dev/null 2>&1; then
+if not type -q brew
     #install linuxbrew
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-fi
+end
 
-if ! command -v nvim > /dev/null 2>&1; then
+if not type -q nvim
     brew install neovim
-fi
+end
 
-if [ ! -d "$HOME/.tmux/plugins/tpm" ]
-then
+if not test -d "~/.tmux/plugins/tpm"
     git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-fi
+end
 
-if [ ! -d "$HOME/.local/share/nvim/site/pack/packer/" ]
-then
+if not test -d "~/.local/share/nvim/site/pack/packer"
     echo "bootrapping packer"
     git clone --depth 1 https://github.com/wbthomason/packer.nvim \
         ~/.local/share/nvim/site/pack/packer/start/packer.nvim
-fi
+end
 
 nvim "+PackerSync" "+qall"
 
@@ -42,4 +40,13 @@ nvim "+PackerSync" "+qall"
 wget -P ~ https://git.io/.gdbinit
 
 #Fisher plugin manager
-curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
+if not type -q fisher
+    curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
+    fisher install patrickf1/fzf.fish
+    fisher install edc/bass
+end 
+
+if not type -q starship
+    curl -sS https://starship.rs/install.sh | sh
+end
+

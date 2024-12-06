@@ -10,7 +10,7 @@ require("nvim-lsp-installer").setup({
     }
 })
 
-local capabilities = require("cmp_nvim_lsp").update_capabilities(
+local capabilities = require("cmp_nvim_lsp").default_capabilities(
     vim.lsp.protocol.make_client_capabilities())
 
 
@@ -27,7 +27,7 @@ local attach_hook = function(client, bufnr)
     --vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
     --vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
     --vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
-    --vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
+    vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
     --vim.keymap.set('n', '<space>f', vim.lsp.buf.formatting, bufopts)
 end
 
@@ -43,7 +43,14 @@ lspconfig.rust_analyzer.setup {
 }
 lspconfig.pyright.setup {
     on_attach = attach_hook,
-    capabilities = capabilities
+    capabilities = capabilities,
+    settings = {
+        python = {
+            analysis = {
+                typeCheckingMode = "off"
+            }
+        }
+    }
 }
 lspconfig.hls.setup {
     on_attach = attach_hook,

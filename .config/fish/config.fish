@@ -1,10 +1,18 @@
 if status is-interactive
-    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-    set -g fish_greeting
     # Commands to run in interactive sessions can go here
-    if test -d /opt/spack
-        source /opt/spack/share/spack/setup-env.fish
-    end
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
-    fish_add_path $HOME/.cargo/bin
+    set -g fish_greeting
+    set -gx EDITOR nvim
+
+    fish_add_path /home/linuxbrew/.linuxbrew/opt/node@20/bin
+    fish_add_path -a /usr/local/cuda/bin
+    fish_add_path -a /home/felliu/.local/bin
+
+    set -gx CUDA_PATH /usr/local/cuda
+
+    starship init fish | source
 end
+
+# Created by `pipx` on 2024-10-14 09:48:40
+set PATH $PATH /home/felliu/.local/bin
