@@ -1,15 +1,3 @@
-require("nvim-lsp-installer").setup({
-    -- automatically detect which servers to install (based on which servers are set up via lspconfig)
-    automatic_installation = false,
-    ui = {
-        icons = {
-            server_installed = "✓",
-            server_pending = "➜",
-            server_uninstalled = "✗"
-        }
-    }
-})
-
 local capabilities = require("cmp_nvim_lsp").default_capabilities(
     vim.lsp.protocol.make_client_capabilities())
 
@@ -58,7 +46,6 @@ lspconfig.hls.setup {
 }
 
 
-require("lsp_lines").setup()
-vim.diagnostic.config({virtual_text = false,})
+vim.diagnostic.config { virtual_lines = true }
 
 

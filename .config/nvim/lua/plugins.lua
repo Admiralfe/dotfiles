@@ -7,7 +7,6 @@ return require("packer").startup(function(use)
 
     use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" }
 
-    use "williamboman/nvim-lsp-installer"
     use "neovim/nvim-lspconfig"
 
     use "hrsh7th/nvim-cmp"
@@ -21,9 +20,8 @@ return require("packer").startup(function(use)
           requires = {{"nvim-lua/plenary.nvim"}}}
 
     -- Compiled fuzzy finder
-    use { "nvim-telescope/telescope-fzf-native.nvim", run = "make" }
+    use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
 
-    use "https://git.sr.ht/~whynothugo/lsp_lines.nvim"
     use "simrat39/rust-tools.nvim"
 
     -- install without yarn or npm
@@ -31,8 +29,4 @@ return require("packer").startup(function(use)
         "iamcco/markdown-preview.nvim",
         run = function() vim.fn["mkdp#util#install"]() end,
     })
-    use({ "iamcco/markdown-preview.nvim",
-            run = "cd app && npm install",
-            setup = function() vim.g.mkdp_filetypes = { "markdown" } end,
-            ft = { "markdown" }, })
 end)
