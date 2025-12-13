@@ -1,3 +1,4 @@
+
 local capabilities = require("cmp_nvim_lsp").default_capabilities(
     vim.lsp.protocol.make_client_capabilities())
 
@@ -19,31 +20,29 @@ local attach_hook = function(client, bufnr)
     --vim.keymap.set('n', '<space>f', vim.lsp.buf.formatting, bufopts)
 end
 
-local lspconfig = require("lspconfig")
+vim.lsp.config("clangd", {
+    on_attach = attach_hook,
+    capabilities = capabilities,
+})
+vim.lsp.enable("clangd")
 
-lspconfig.clangd.setup {
+vim.lsp.config("rust_analyzer", {
     on_attach = attach_hook,
     capabilities = capabilities,
-}
-lspconfig.rust_analyzer.setup {
+})
+vim.lsp.enable("rust_analyzer")
+
+vim.lsp.config("pyright", {
+    on_attach = attach_hook,
+    capabilities = capabilities
+})
+vim.lsp.enable("pyright")
+
+vim.lsp.config("hls", {
     on_attach = attach_hook,
     capabilities = capabilities,
-}
-lspconfig.pyright.setup {
-    on_attach = attach_hook,
-    capabilities = capabilities,
-    settings = {
-        python = {
-            analysis = {
-                typeCheckingMode = "off"
-            }
-        }
-    }
-}
-lspconfig.hls.setup {
-    on_attach = attach_hook,
-    capabilities = capabilities,
-}
+})
+vim.lsp.enable("hls")
 
 
 vim.diagnostic.config { virtual_lines = true }
