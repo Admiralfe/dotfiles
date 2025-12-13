@@ -44,7 +44,6 @@ vim.lsp.config("hls", {
 })
 vim.lsp.enable("hls")
 
-
-vim.diagnostic.config { virtual_lines = true }
-
+require("tiny-inline-diagnostic").setup()
+vim.diagnostic.config { virtual_text = false }
 
